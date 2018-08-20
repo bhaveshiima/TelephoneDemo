@@ -79,6 +79,13 @@
         android:id="@+id/et5_body"
         android:hint="Email Body" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attach"
+        android:id="@+id/attach"
+        android:layout_gravity="right"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
