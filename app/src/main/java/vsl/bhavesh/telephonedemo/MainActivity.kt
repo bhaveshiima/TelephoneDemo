@@ -35,8 +35,11 @@ class MainActivity : AppCompatActivity() {
         // Permission not granted
         if (status==PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(this@MainActivity,
-                    arrayOf(Manifest.permission.SEND_SMS, Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.INTERNET,Manifest.permission.CAMERA),0    )
+                    arrayOf(Manifest.permission.SEND_SMS,
+                            Manifest.permission.CALL_PHONE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.INTERNET,
+                            Manifest.permission.CAMERA),0    )
         }
         // Runtime Permission [ END ]
 
@@ -81,10 +84,8 @@ class MainActivity : AppCompatActivity() {
             alert_dialog.setPositiveButton("CAMERA", object : DialogInterface.OnClickListener{
                     override fun onClick(p0: DialogInterface?, p1: Int) {
                         // open the camera
-                        var i = Intent("android.media.action.IMAGE") //open predefine activity
+                        var i = Intent("android.media.action.IMAGE_CAPTURE") //open predefine activity
                         startActivityForResult(i,123) // request code - any positive number
-
-
                     }
 
             })
@@ -181,13 +182,15 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         // Toast Message display
-        if (grantResults[0] == PackageManager.PERMISSION_DENIED && grantResults[1] == PackageManager.PERMISSION_DENIED){
+        if (grantResults[0] == PackageManager.PERMISSION_DENIED && grantResults[1] == PackageManager.PERMISSION_DENIED && grantResults[2] == PackageManager.PERMISSION_DENIED && grantResults[3] == PackageManager.PERMISSION_DENIED && grantResults[4] == PackageManager.PERMISSION_DENIED){
             Toast.makeText(this,"You Cann't send SMS and CALL. First you need to Allow Permission",Toast.LENGTH_LONG).show()
         }
 
+        /*
         if (grantResults[2] == PackageManager.PERMISSION_DENIED && grantResults[3] == PackageManager.PERMISSION_DENIED && grantResults[4] == PackageManager.PERMISSION_DENIED){
             Toast.makeText(this,"You Cann't send Email & Use Camera. First you need to Allow Permission",Toast.LENGTH_LONG).show()
         }
+        */
     }
     // Override Request Permission [ END ]
 
