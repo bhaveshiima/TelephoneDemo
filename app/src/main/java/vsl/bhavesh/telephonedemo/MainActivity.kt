@@ -138,9 +138,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        // Java Email Send
+        // Java Email Send using AsyncTask
         javamail.setOnClickListener {
 
+            var lop = LongOperation(et3_email.text.toString(),
+                    et4_subject.text.toString(),et5_body.text.toString())
+
+            lop.execute()
         }
 
     } // onCreate function
